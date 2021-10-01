@@ -1,6 +1,6 @@
 alert("Hey, This is Sakshi. Nice to have you visit my page ");
 
-const startingMinutes = 10;
+const startingMinutes = 1;
 let time = startingMinutes * 60; //600 seconds
 
 const timerEl = document.getElementById("Timer"); //id name from HTML <p>
@@ -31,9 +31,14 @@ function updateTimer() {
 
     time = time < 0 ? 0 : time;
     //to avoid getting negative numbers
+
+    if (sec == 0 || sec < 1) {
+        endTimer();
+        clearInterval(time);
+    }
 }
 
 
-function endCount() {
-    timeH.innerHTML = "Time Out";
+function endTimer() {
+    timerEl.innerHTML = "Time Out";
 }
